@@ -63,21 +63,21 @@ simpleArray
 
 
 //2.5* Написать функцию, которая добавляет в массив новое число Фибоначчи, и добавить при помощи нее 100 элементов.
-func nextFibonachchi (_ array : [Int]) -> Int {
+func nextFibonachchi (_ array : [Double]) -> Double {
     let n = array.count
     let value = array[n - 1]+array[n - 2]
     return value
 }
 
-var fibonachchiArray: [Int] = [0 , 1]
+var fibonachchiArray: [Double] = [0 , 1]
 fibonachchiArray.append(nextFibonachchi(fibonachchiArray))
 
 //дальше цикл запустить не удалось, хотя я переписала его миллион раз. Один из вариантов -- ниже. Почему он выдает ошибку я не знаю
-/*repeat {
+repeat {
 fibonachchiArray.append(nextFibonachchi(fibonachchiArray))
- } while (fibonachchiArray.count < 100)*/
+ } while (fibonachchiArray.count < 100)
 
-
+fibonachchiArray
 
 
 
