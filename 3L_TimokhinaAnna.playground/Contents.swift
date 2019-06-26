@@ -12,10 +12,14 @@ enum engineAction {
     case start, stop
 }
 enum windowAcrion {
-    case open, close
+    case open, shut
 }
 enum trunkAction {
     case load, unload
+}
+
+enum infoLength{
+    case short, full
 }
 
 struct car {
@@ -36,6 +40,15 @@ struct car {
     func carInfo () {
         print ("Информация об автомобиле: марка: \(brand), год выпуска: \(year), на текущий момент статус двигателя: \(engineState)ed")
     }
+    
+    func carInfo2 (mode: infoLength){
+        switch mode {
+        case .short : (print ("Информация об автомобиле: марка: \(brand), год выпуска: \(year), объем багажника: \(trunkVolume)"))
+        case .full : (print ("Информация об автомобиле: марка: \(brand), год выпуска: \(year), объем багажника: \(trunkVolume),  на текущий момент статус двигателя: \(engineState)ed, статус окон: \(windowsState)ed, статус багажника: \(trunkState)ed"))
+        default : (print ("Информация об автомобиле: марка: \(brand), год выпуска: \(year)"))
+            
+        }
+    }
 }
 
 struct truck {
@@ -53,9 +66,9 @@ struct truck {
 
 // экземпляры
 
-var car1 = car(brand: "Range over", year: 2013, trunkVolume: 3.0, engineState: .start, windowsState: .close, trunkState: .unload)
+var car1 = car(brand: "Range Rover", year: 2013, trunkVolume: 3.0, engineState: .start, windowsState: .shut, trunkState: .unload)
 var car2 = car(brand: "Lada", year: 2017, trunkVolume: 2.1, engineState: .stop, windowsState: .open, trunkState: .load)
-var truck1 = truck(brand: "dunno", year: 2023, trunkVolume: 1000, engineState: .start, windowsState: .close, trunkState: .load)
+var truck1 = truck(brand: "dunno", year: 2023, trunkVolume: 1000, engineState: .start, windowsState: .shut, trunkState: .load)
 
 //глушим двигатель
 car1.carInfo()
@@ -71,3 +84,7 @@ truck1.truckInfo()
 car1.carInfo()
 car2.carInfo()
 truck1.truckInfo()
+
+//выводим разные варианты экземпляров (функция с перечислением в аргументе)
+car1.carInfo2(mode: .full)
+car1.carInfo2(mode: .short)
